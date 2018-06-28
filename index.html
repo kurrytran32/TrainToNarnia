@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Employee Sign In</title>
+    <title>Fantasy Express</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
@@ -15,7 +15,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
    
@@ -28,8 +28,8 @@
         <div class='bigJumbo'>
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4 text-center">Employee Data Management</h1>
-                    <p class="lead text-center">A Comprehensive Directory of Employee Billable Hours</p>
+                    <h1 class="display-4 text-center">All Aboard the Fantasy Express</h1>
+                    <p class="lead text-center">Destinations for your IMAGINATION!</p>
                 </div>
             </div>
         </div>
@@ -39,19 +39,18 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Current Employees</h2>
+                        <h3>Current Employees</h3>
                     </div>
                     <div class="card-body">
                         <!-- add table here -->
                         <table class="table" style="width:100%">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Employee Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Start Date</th>
-                                    <th scope="col">Months Worked</th>
-                                    <th scope="col">Monthly Rate($)</th>
-                                    <th scope="col">Total Billed($)</th>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,31 +64,31 @@
 
         <!-- add in card with form field -->
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <div class="input-card">
                     <div class="card">
                         <div class="card-header">
-                            <h2>Add Employee</h2>
+                            <h3>Add Train</h3>
                         </div>
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="emName">Employee Name</label>
-                                    <input type="text" class="form-control" id="emName" placeholder="">
+                                    <label for="trainName">Train Name</label>
+                                    <input type="text" class="form-control" id="trainName" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="start">Start Date (DD/MM/YY - ex: 01/01/89)</label>
-                                    <input type="text" class="form-control" id="start" placeholder="">
+                                    <label for="destination">Destination</label>
+                                    <input type="text" class="form-control" id="destination" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="position">Position</label>
-                                    <input type="text" class="form-control" id="position" placeholder="">
+                                    <label for="firstTrain">First Train Time (HH:mm - military time)</label>
+                                    <input type="text" class="form-control" id="firstTrain" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="rate">Monthly Rate</label>
-                                    <input type="text" class="form-control" id="rate" placeholder="">
+                                    <label for="freq">Frequency (min)</label>
+                                    <input type="text" class="form-control" id="freq" placeholder="">
                                 </div>
-                                <button type="submit" class="btn btn-primary mb-2">Add</button>
+                                <button type="submit" class="btn btn-primary mb-2">Add Train</button>
                             </form>
                         </div>
 
@@ -100,7 +99,7 @@
 
     </div>
 
-    <script src="assets/javascript/time.js"></script>
+    <script src="assets/javascript/train.js"></script>
 
 </body>
 
