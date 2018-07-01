@@ -10,15 +10,21 @@
   firebase.initializeApp(config);
 
   let database = firebase.database();
-
+  
   $('button:submit').on('click', function(){
       event.preventDefault();
       let trainName = $('#trainName').val().trim();
       //parsing train time to military time format("X") changes into unix
-      let firstTrain = moment($('#firstTrain').val().trim(), 'HH:mm');
+      let firstTrain = $('#firstTrain').val().trim();
       let destination = $('#destination').val().trim();
       //parsing frequency into minutes
       let freq = $('#freq').val().trim();
+
+      //clearing form field elements
+      $('#trainName').val("");
+      $('#firstTrain').val("");
+      $('#destination').val('');
+      $('#freq').val('');
 
       //setting new values into a variable for easier firebase push
       let fireVal = {
@@ -41,24 +47,33 @@
     
     //sets local values to firebase values
     tName = snap.fireName;
-    tStart = snap.fireStart;
+    tStart = moment(snap.fireStart, 'HH:mm');
     tDestination = snap.fireDestination;
     tFreq= snap.fireFreq;
     console.log(tName);
     console.log(tDestination);
-    console.log(tStart)
+    // console.log(tStart);
 
-    //next train = (difference of time) %
-    let nowUnix = moment().unix();
-    console.log(nowUnix)
-    
-    
+    //now time stamp
+    let now = moment();
+    console.log(now)
+
+    while(tStart < now) {
+      tStart = moment(tStart).add(snapshot.val().fireFreq, 'minutes');
+    }
+    console.log(tStart)
+    let nextArrival = moment(tStart).format('HH:mm');
+    console.log(nextArrival);
+    //minutes away
+    let minutesAway = moment(nextArrival, 'HH:mm').fromNow();
+    console.log(minutesAway);
+      
     
     // defining variables for table row and table head
     let $tr = $('<tr>');
     let $td = '<td>';
     
-    $tr.append($td + tName + $td + tDestination + $td + tFreq + $td + "NaN" + $td + "NaN");
+    $tr.append($td + tName + $td + tDestination + $td + tFreq + $td + nextArrival + $td + minutesAway);
 
     $('tbody').append($tr);
 
